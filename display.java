@@ -16,7 +16,7 @@ import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3f;
 /**
- * @author P0sitr0n
+ * @author ArtificialBreeze
  */
 public final class Display extends Applet {
 SimpleUniverse u = new SimpleUniverse();
