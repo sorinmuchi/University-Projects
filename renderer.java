@@ -3,7 +3,7 @@ import java.util.HashMap;
 import javax.media.j3d.Appearance;
 import javax.vecmath.Point3d;
 /**
- * @author Gh00st
+ * @author ArtificialBreeze
  */
 public class Renderer {
     HashMap<String,Float> coordinates;
