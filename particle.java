@@ -5,7 +5,7 @@ import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
 import javax.vecmath.*;
 /**
- * @author:Gh00st
+ * @author: ArtificialBreeze
 */
 public class Particle
 {
