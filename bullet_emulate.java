@@ -3,7 +3,7 @@ import javax.vecmath.*;
 import org.uncommons.maths.random.GaussianGenerator;
 import org.uncommons.maths.random.MersenneTwisterRNG;
 /**
- * @author: Gh00st
+ * @author: ArtificialBreeze
  * Aerodynamics emulator
     Copyright (C) 2014  Gh0st
 
