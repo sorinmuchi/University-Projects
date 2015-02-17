@@ -2,7 +2,7 @@ import com.sun.j3d.utils.geometry.Cone;
 import javax.media.j3d.*;
 import javax.vecmath.*;
 /**
- * @author: Gh00st
+ * @author: ArtificialBreeze
 */
 public class Bullet
 {
