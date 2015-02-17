@@ -34,7 +34,8 @@ final static double lead=0.43;
 	//Saving a backup of the name to use it for user interaction
 	this.materialName=material;
 	//Linking construtor @param speed with the object
-	this.velocity=new Vector3d(Bullet_emulate.velocity.x,Bullet_emulate.velocity.y,Bullet_emulate.velocity.z);
+	this.velocity=new 
+Vector3d(Bullet_emulate.velocity.x,Bullet_emulate.velocity.y,Bullet_emulate.velocity.z);
 	//Setting real bullet dimensions
 	this.length=0.022;
 	this.diameter=0.0075;
@@ -57,8 +58,10 @@ final static double lead=0.43;
 	 this.density = 7.8;
 	break;
         }
-	//Linking constructor @param mass with the object (M=V*d), density at room temperature
-	this.mass=density*length*100*Math.PI*Math.pow((diameter*100/2),2);
+	//Linking constructor @param mass with the object (M=V*d), 
+density at room temperature
+	
+this.mass=density*length*100*Math.PI*Math.pow((diameter*100/2),2);
         switch(shape)
         {
             //Here we can add other shapes included with the 3D Java API
@@ -76,11 +79,17 @@ final static double lead=0.43;
 	public static boolean isInside(Particle particle)
 	{
             boolean check=true;
-            check =(particle.center.getX()>center.getX()+solid.getHeight()/2)? false :true;
-            check =(particle.center.getX()<center.getX()-solid.getHeight()/2)? false :true;
+            check 
+=(particle.center.getX()>center.getX()+solid.getHeight()/2)? false 
+:true;
+            check 
+=(particle.center.getX()<center.getX()-solid.getHeight()/2)? false 
+:true;
             double theta=Math.atan(solid.getRadius()/solid.getHeight());
-            double thetaY=Math.atan(particle.center.getY()/particle.center.getX());
-            double thetaZ=Math.atan(particle.center.getZ()/particle.center.getX());
+            double 
+thetaY=Math.atan(particle.center.getY()/particle.center.getX());
+            double 
+thetaZ=Math.atan(particle.center.getZ()/particle.center.getX());
             if (thetaY>theta || thetaZ>theta)
                 check=false;
             return check;
@@ -100,7 +109,8 @@ solid rotate renderer
             tg.addChild(solid);
             tg.setTransform(translate);
             translate.mul(rotate);
-            //Get the center of the shape (position). Initialized by default to 0,0,0
+            //Get the center of the shape (position). Initialized by 
+default to 0,0,0
             center = new Point3d(0,0,0);
         }
         public void move(double dt)
