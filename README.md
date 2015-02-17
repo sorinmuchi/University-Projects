@@ -5,4 +5,4 @@ Pr0ject-Aer0Bu11et
 
 #Approaching real life problems with brute force
 
-#AUTHOR: xXGh0stXx
+#AUTHORS: Bogdan Mazoure (ArtificialBreeze) and Tsvetelin Ivanov
