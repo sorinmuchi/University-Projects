@@ -6,6 +6,8 @@
 \begin{document}
 $B-A-W :MergeSort: O(nlogn) HeapSort: O(nlogn) QuickSort: O(nlogn)-O(nlogn)-O(n^2) InsertionSort: O(n)-O(n^2)-O(n^2) BubbleSort: O(n)-O(n^2)-O(n^2)$\\
 RemoveMin()-replace by last node. Bubble down-swap with smallest child.\\
+RemoveMax() -repalce by last node. Bubble down-swap with largest child\\
+Insert() - add at the end of array (rightmost last node)\\
 Unsuccessfull search- $O(1+\alpha)$. Successfull - $\Theta(1+\alpha)$.\\
 \textbf{Division method}$: h(k)=k \; mod\; d, d=2^r$, r prime, not close to power of 2 or 10.\\
 \textbf{Multiplication method:} $h(k)=Ak \; mod \; 2^w << w -r, 2^{w-1} < A < 2^w$.\\
@@ -26,7 +28,7 @@ Unsuccessfull search- $O(1+\alpha)$. Successfull - $\Theta(1+\alpha)$.\\
 8. if largest $\neq$ i\\
 9. \indent then exchange A[ i] $\leftrightarrow$ A[ largest]\\
 10. \indent MaxHeapify( A, largest)\\
-\textbf{BuildMaxHeap:} Maxheapify(A, i,length(A)) i from length(A)/2 to 1.
+\textbf{BuildMaxHeap:} Maxheapify(A, i,length(A)) i from length(A)/2 to 1.\\
 \textbf{Heapsort(A):}\\
 1. Build-Max-Heap( A)\\
 2. for i ← length[ A] down to 2\\
@@ -44,7 +46,7 @@ if x.leftchild is left unbalanced or balanced: \\
 continue with x's ancestors.\\
 \textbf{In-Order} on AVL /BST - $>$ increasing keys (sorted)\\
 \textbf{AVL sort} -worst:$O(nlogn)$ if balanced. \textbf{BST sort}-best:$O(nlogn)$, worst:$O(n^2)$.\\
-\textbf{R-B Tree:} Root is black. NIL is black. Alternate parent-child colors.All black heights are same from node to descendants. If no child-put NIL. \textbf{Black-height(x):} \# black nodes from x to NIL (count NIL, dont count x).\\
+\textbf{R-B Tree:} BST. Root is black. NIL is black. No consecutive red nodes.All black heights are same from node to descendants. If no child-put NIL. \textbf{Black-height(x):} \# black nodes from x to NIL (count NIL, dont count x).\\
 \textbf{R-B insert(x): } BST insert x as red then restore R-B property.\\
 \includegraphics[scale=0.6]{RB-fix.png}\\
 \textbf{Sets: }In forest representation, root==representative.\\
@@ -142,9 +144,14 @@ f.augment(Path)
 update Residual based on new f
 }
 \end{lstlisting}
-\textbf{Flow through a cut: } $|f|=\sum f(e) from A to B - \sum f(e) from B to A$.\\
+\textbf{Flow through a cut: } $|f|=\sum$ f(e) from A to B - $\sum$ f(e) from B to A.\\
 \textbf{Minimum cut: } \\
 1. Run Ford-Fulkerson for max flow.\\
-2. Run BFS /DFS from s.\\
-3. All reachable vertices define the cut.
+2. Run BFS /DFS from s on Residual.\\
+3. All reachable vertices define the cut.\\
+------------------------------------------------\\
+$\sum_{k=0}^{n-1}ar^k=a\frac{1-r^n}{1-r}$.\\
+$BST \; amount \; of \; nodes=2^{h+1}-1$\\
+$RBT \; h \leq 2 \log_2(n+1)$\\
+
 \end{document}
