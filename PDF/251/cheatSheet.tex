@@ -1,13 +1,16 @@
-\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+\documentclass[paper=a4, fontsize=10pt]{scrartcl} % A4 paper and 11pt font size
 \usepackage[margin=0.2in]{geometry}
 \usepackage{graphicx}
 \usepackage{listings}
 \lstset{language=C}
 \begin{document}
 $B-A-W :MergeSort: O(nlogn) HeapSort: O(nlogn) QuickSort: O(nlogn)-O(nlogn)-O(n^2) InsertionSort: O(n)-O(n^2)-O(n^2) BubbleSort: O(n)-O(n^2)-O(n^2)$\\
+\textbf{Heap OP:}
 RemoveMin()-replace by last node. Bubble down-swap with smallest child.\\
-RemoveMax() -repalce by last node. Bubble down-swap with largest child\\
+RemoveMax() -replace by last node. Bubble down-swap with largest child\\
 Insert() - add at the end of array (rightmost last node)\\
+\textbf{BST OP:}
+BST remove(i) - find smallest child c in rightmost child of i. replace i with c. remove original c.\\
 Unsuccessfull search- $O(1+\alpha)$. Successfull - $\Theta(1+\alpha)$.\\
 \textbf{Division method}$: h(k)=k \; mod\; d, d=2^r$, r prime, not close to power of 2 or 10.\\
 \textbf{Multiplication method:} $h(k)=Ak \; mod \; 2^w << w -r, 2^{w-1} < A < 2^w$.\\
@@ -45,6 +48,8 @@ if x.leftchild is left unbalanced or balanced: \\
 \indent else left rotate then right rotate.\\
 continue with x's ancestors.\\
 \textbf{In-Order} on AVL /BST - $>$ increasing keys (sorted)\\
+\includegraphics[scale=0.5]{Sorted_binary_tree_inorder.jpg}\includegraphics[scale=0.5]{Sorted_binary_tree_preorder.jpg}\includegraphics[scale=0.5]{Sorted_binary_tree_postorder.jpg}\\
+\textbf{InOrder: }A,B,C,D,E,F,G,H,I-\textbf{PreOrder:} F,B,A,D,C,E,G,I,H-\textbf{PostOrder: }A,C,E,D,B,H,I,G,F\\
 \textbf{AVL sort} -worst:$O(nlogn)$ if balanced. \textbf{BST sort}-best:$O(nlogn)$, worst:$O(n^2)$.\\
 \textbf{R-B Tree:} BST. Root is black. NIL is black. No consecutive red nodes.All black heights are same from node to descendants. If no child-put NIL. \textbf{Black-height(x):} \# black nodes from x to NIL (count NIL, dont count x).\\
 \textbf{R-B insert(x): } BST insert x as red then restore R-B property.\\
@@ -62,7 +67,7 @@ $\pi$[u]=v, v is the predecessor of u.\\
 \textbf{Parenthesis Thm:} ()((())). Cannot finish exploring parent before child.\\
 \includegraphics{edges.png}
 \textbf{DAG:} Directed Acyclic Graph (tree is a DAG).\textbf{Partial order:} $a>b,b>c \rightarrow a>c$ but maybe a=b. \textbf{Total order:} Always $a>b$ or $a<b$.\\
-\textbf{Topological Sort:} On DAG, no back edges. $\Theta(V+E)$. \textbf{Strongly Connectd Component } if we can reach u from v, for any u and v in a subset of G. $G^T$ has edges flipped (forward=backward).\\
+\textbf{Topological Sort:} On DAG, no back edges. $\Theta(V+E)$. \textbf{Strongly Connected Component } if we can reach u from v, for any u and v in a subset of G. $G^T$ has edges flipped (forward=backward).\\
 \textbf{Compute SCC:} DFS(G), then $G^T$, then DFS($G^T$) (in order of deacreasing f[u], as computed by DFS(G)).\\
 \textbf{d[u]:} start time.\textbf{f[u]:} finish time.\\
 \textbf{MST: }Connect all edges. Cut respects A - no edge in A crosses it.\textbf{ Safe edge}: smallest weight edge between A and V-A.\\
