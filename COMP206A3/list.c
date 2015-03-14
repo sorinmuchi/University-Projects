@@ -25,6 +25,7 @@ void prettyPrint(struct NODE *head)
 			printf("%d -> ",iterator->value);
 		iterator=iterator->next;
 	}
+	printf("\n");
 }
 struct NODE* find(struct NODE *head,int value)
 {
