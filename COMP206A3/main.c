@@ -18,6 +18,18 @@ void main()
 	fclose(fp);
 	prettyPrint(head);
 	int toDelete;
-	printf("Please input an integer value");
+	readBack: printf("Please input an integer value");
 	scanf("%d",&toDelete);
+	if (delete(head,toDelete)
+		printf("Number was deleted\n");
+	else
+		printf("Number was not found!\n");
+	prettyPrint(head);
+	printf("Do it again [y/n] ?\n");
+	char option[DEFAULT_STRING_SIZE];
+	scanf("%s",option);
+	if ((input[0]=='Y' && input[1]=='\0') || (input[0] =='y' && input[1]=='\0') || (input[0]=='Y' && input[1]=='E' && input[2]=='S' && input[3]=='\0') || (input[0]=='y' && input[1]=='e' && input[2]=='s' && input[3]=='\0') || (input[0]=='Y' && input[1]=='e' && input[2]=='s' && input[3]=='\0'))
+	{
+		goto readBack;
+	}
 }

@@ -26,13 +26,25 @@ void prettyPrint(struct NODE *head)
 		iterator=iterator->next;
 	}
 }
+struct NODE* find(struct NODE *head,int value)
+{
+	struct NODE* iterator;
+	iterator=head;
+	while (iterator->next != NULL)
+	{
+		if (iterator->value == value)
+			return iterator;
+		iterator=iterator->next;
+	}
+	return NULL;
+}
 BOOLEAN delete(struct NODE *head,int value)
 {
 	//Create an iterator
 	struct NODE* iterator;
 	iterator=head;
-	//Find the first occurence of the value
-	NODE *node=find(head,value);
+	//Find the first occurrence of the value
+	struct NODE *node=find(head,value);
 	//Abort if not found
 	if (node == NULL)
 		return FALSE;
@@ -64,16 +76,4 @@ BOOLEAN delete(struct NODE *head,int value)
 		return TRUE;
 	}
 	return TRUE;
-}
-struct NODE *find(struct NODE *head,int value)
-{
-	struct NODE* iterator;
-	iterator=head;
-	while (iterator->next != NULL)
-	{
-		if (iterator->value == value)
-			return iterator;
-		iterator=iterator->next;
-	}
-	return NULL;
 }

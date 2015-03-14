@@ -1,12 +1,12 @@
 #ifndef TOKEN
 #define TOKEN -1
 #define DEFAULT_STRING_SIZE 255
+#define TRUE 1
+#define FALSE 0
 #include <stdlib.h>
 #include <stdio.h>
 #endif
-typedef BOOLEAN int;
-typedef TRUE 1;
-typedef FALSE 0;
+typedef int BOOLEAN;
 //This is a node
 struct NODE
 {
