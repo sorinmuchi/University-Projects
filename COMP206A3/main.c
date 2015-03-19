@@ -1,4 +1,5 @@
 #include "list.h"
+struct NODE	*head;
 void main()
 {
 	char filename[DEFAULT_STRING_SIZE];
@@ -7,24 +8,24 @@ void main()
 	FILE *fp=fopen(filename,"r");
 	if (fp == NULL)
 		goto INPUT;
-	struct NODE* head=(struct NODE*)malloc(sizeof(struct NODE));
+	head=(struct NODE*)malloc(sizeof(struct NODE));
 	head->next=NULL;
 	while (!feof(fp))
 	{
 		char c=fgetc(fp);
 		if (c != '\n')
-		add(head,c-'0');
+		add(c-'0');
 	}
 	fclose(fp);
-	prettyPrint(head);
+	prettyPrint();
 	int toDelete;
 	readBack: printf("Please input an integer value");
 	scanf("%d",&toDelete);
-	if (delete(head,toDelete))
+	if (delete(toDelete))
 		printf("Number was deleted\n");
 	else
 		printf("Number was not found!\n");
-	prettyPrint(head);
+	prettyPrint();
 	printf("Do it again [y/n] ?\n");
 	char input[DEFAULT_STRING_SIZE];
 	scanf("%s",input);

@@ -13,6 +13,7 @@ struct NODE
 	int value;
 	struct NODE *next;
 };
-void add(struct NODE *, int);
-void prettyPrint(struct NODE *);
-BOOLEAN delete(struct NODE *,int);
+extern struct NODE *head;
+void add(int);
+void prettyPrint();
+BOOLEAN delete(int);
