@@ -17,9 +17,9 @@ void add(int value)
 void prettyPrint()
 {
 	struct NODE* iterator=head->next;
-	while (iterator->next != NULL)
+	while (iterator != NULL)
 	{
-		if (iterator->next->next == NULL)
+		if (iterator->next == NULL)
 			printf("%d",iterator->value);
 		else 
 			printf("%d -> ",iterator->value);
@@ -31,12 +31,13 @@ struct NODE* find(int value)
 {
 	struct NODE* iterator;
 	iterator=head;
-	while (iterator->next != NULL)
+	while (iterator != NULL)
 	{
 		//If we found the node, return the position pointer
 		if (iterator->value == value)
 			return iterator;
-		iterator=iterator->next;
+		if (iterator->next != NULL)
+			iterator=iterator->next;
 	}
 	//Node was not found, returning null
 	return NULL;

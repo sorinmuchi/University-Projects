@@ -10,16 +10,14 @@ void main()
 		goto INPUT;
 	head=(struct NODE*)malloc(sizeof(struct NODE)); //Allocate 1 NODE to head
 	head->next=NULL; //Head=tail
-	while (!feof(fp))
-	{
-		char c=fgetc(fp); //Read a char
-		if (c != '\n') //Skip the newline characters
-		add(c-'0'); //Convert to char right away, then add to the LL
-	}
+	char line[256];
+	while (fgets(line, sizeof(line), fp)) {
+		add(atoi(line));
+    }
 	fclose(fp); //We always close the file
 	prettyPrint(); //Print the LL
 	int toDelete;
-	readBack: printf("Please input an integer value");
+	readBack: printf("Please input an integer value: ");
 	scanf("%d",&toDelete);
 	if (delete(toDelete)) //If it was deleted
 		printf("Number was deleted\n");
