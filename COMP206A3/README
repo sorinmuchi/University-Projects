@@ -1,0 +1,17 @@
+AUTHOR: Bogdan Mazoure
+DATE: March 23rd 2015
+COMPILED USING: make
+		make clean
+STRUCT: list.c Linked List functions
+	main.c Main program
+	list.h Function prototypes, boolean typedef, NODE typedef
+	list.txt Sample list file to be read by list.exe
+	list.exe Compiled output (Optional)
+	../.git Git repo version control 
+	makefile makefile to link, compile and clean
+	README This readme / MANIFEST
+NOTE: The .git folder has been pushed to the remote repository on 
+GitHub to make it easier to check history of commits: 
+github.com/ArtificialBreeze/University-Projects/tree/master/COMP206A3
+
+END

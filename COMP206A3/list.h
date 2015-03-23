@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #endif
+//Define a boolean
 typedef int BOOLEAN;
 //This is a node
 struct NODE
@@ -13,7 +14,9 @@ struct NODE
 	int value;
 	struct NODE *next;
 };
+//Declare here to make both list.c and main.c see it
 extern struct NODE *head;
+//Function prototypes
 void add(int);
 void prettyPrint();
 BOOLEAN delete(int);

@@ -33,10 +33,12 @@ struct NODE* find(int value)
 	iterator=head;
 	while (iterator->next != NULL)
 	{
+		//If we found the node, return the position pointer
 		if (iterator->value == value)
 			return iterator;
 		iterator=iterator->next;
 	}
+	//Node was not found, returning null
 	return NULL;
 }
 BOOLEAN delete(int value)
@@ -56,6 +58,7 @@ BOOLEAN delete(int value)
 		{
 			if (iterator->next == node)
 			{
+				//If we found the node, rewrite the pointer of the previous to null
 				iterator->next=NULL;
 				return TRUE;
 			}
@@ -69,6 +72,7 @@ BOOLEAN delete(int value)
 		{
 			if (iterator->next == node)
 			{
+				//Make the previous point to the next, skipping the current node
 				iterator->next=iterator->next->next;
 				return TRUE;
 			}
