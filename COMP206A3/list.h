@@ -1,5 +1,5 @@
 #ifndef TOKEN
-#define TOKEN -1
+#define TOKEN -321313
 #define DEFAULT_STRING_SIZE 255
 #define TRUE 1
 #define FALSE 0

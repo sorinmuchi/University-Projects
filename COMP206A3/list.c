@@ -64,6 +64,7 @@ BOOLEAN delete(int value)
 			}
 			iterator=iterator->next;
 		}
+		free(node);
 		return TRUE;
 	}
 	else 
@@ -78,7 +79,7 @@ BOOLEAN delete(int value)
 			}
 			iterator=iterator->next;
 		}
+		free(node);
 		return TRUE;
 	}
-	return TRUE;
 }
