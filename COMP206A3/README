@@ -6,7 +6,7 @@ STRUCT: list.c Linked List functions
 	main.c Main program
 	list.h Function prototypes, boolean typedef, NODE typedef
 	list.txt Sample list file to be read by list.exe
-	list.exe Compiled output (Optional)
+	list Compiled output (Optional)
 	../.git Git repo version control 
 	makefile makefile to link, compile and clean
 	README This readme / MANIFEST
