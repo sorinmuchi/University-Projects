@@ -31,14 +31,13 @@ struct NODE* find(int value)
 {
 	struct NODE* iterator;
 	iterator=head;
-	while (iterator != NULL)
+	do
 	{
 		//If we found the node, return the position pointer
 		if (iterator->value == value)
 			return iterator;
-		if (iterator->next != NULL)
 			iterator=iterator->next;
-	}
+	}	while (iterator != NULL);
 	//Node was not found, returning null
 	return NULL;
 }
