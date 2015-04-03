@@ -7,4 +7,4 @@ base64.o: base64.c Login.h
 crypt.o: crypt.c Login.h
 	gcc -c crypt.c
 clean: 
-	rm -f base64.o Login.o
+	rm -f base64.o Login.o crypt.o

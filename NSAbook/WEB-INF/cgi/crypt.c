@@ -38,11 +38,10 @@ char *rc4_e(char *text, size_t text_length)
     unsigned char *vector[2] = {"somekey", dup};
         int y;
         rc4_init(vector[0], strlen((char*)vector[0]));
-	char *out=(char *)malloc(2 * text_length * sizeof(char) + 1);
+	char *out=(char *)malloc(text_length * sizeof(char) );
 	char *ptr=out;
         for (y = 0; y < strlen((char*)vector[1]); y++)
            ptr += sprintf(ptr,"%02X",vector[1][y] ^ rc4_output());
-	sprintf(ptr,"\n");
 	*(ptr + 1) = '\0';
     return out;
 }

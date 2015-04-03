@@ -17,10 +17,9 @@ my $name = encode_base64($query->param("name"),'');
 my $password=$query->param("password");
 system("./crypto $password");
 open($fh, "<", "key.dat");
-while (my $row = <$fh>) {
-	  chomp $row;
-	$password=$row;
-}
+my $row = <$fh>;
+chomp $row;
+$password=$row;
 $password=encode_base64($password);
 my $members = 'members.csv';
 my $filesize = stat($members)->size;
