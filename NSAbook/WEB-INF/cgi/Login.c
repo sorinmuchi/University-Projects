@@ -2,22 +2,21 @@
 int main() 
 {
  printf( "Content-Type: text/html\n\n" );
- char *CGIargs = (char *)malloc(SIZE);
+ char *CGIargs = (char *)malloc(SIZE * sizeof(char));
  CGIargs=getenv("QUERY_STRING");
  if (CGIargs == NULL)
  {
 	printf("Please use the form to access the site.\n Exiting...\n");
 	exit(1);
  }
- char* CGIuser=(char*)malloc(SIZE *sizeof(char));
- char* CGIpass=(char*)malloc(SIZE *sizeof(char));
+ char* CGIuser=(char*)malloc(SIZE * sizeof(char));
+ char* CGIpass=(char*)malloc(SIZE * sizeof(char));
  //username=user&password=pass template
  sscanf(CGIargs, "username=%[0-9a-zA-Z]&password=%[0-9a-zA-Z]", CGIuser, CGIpass);
  FILE* fp=mopen();
  ///////////REAL HAX///////////
- char *RC4_CGIpass=(char*)malloc(getSize(CGIuser) *sizeof(char)); //Pass it throu an ARC4 round
+ char *RC4_CGIpass=(char*)malloc(getSize(CGIpass) * sizeof(char)); //Pass it throu an ARC4 round
  strcpy(RC4_CGIpass,rc4_e(CGIpass,sizeof(CGIpass)));
- printf("%s\n",RC4_CGIpass);
  char * CGI_ENC_U=(char *)malloc(SIZE * sizeof(char)); //We want the chars[], not the pointer 
  strcpy(CGI_ENC_U,B64E(CGIuser));	//Thus we copy the return into another mem address
  char * CGI_ENC_P=(char *)malloc(SIZE * sizeof(char));
@@ -51,7 +50,7 @@ int main()
   }
   else //Either not found, or on different lines. In this case, make them try again
   {
-		//printf("<meta http-equiv=\"refresh\" content=\"0; url=../index.html\" />\n");
+		printf("<meta http-equiv=\"refresh\" content=\"0; url=../index.html\" />\n");
   }
   return 0;
 }

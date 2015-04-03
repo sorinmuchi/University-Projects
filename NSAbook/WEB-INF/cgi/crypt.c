@@ -35,7 +35,7 @@ char *rc4_e(char *text, size_t text_length)
 {
 	char *dup=(char *)malloc(text_length * sizeof(char));
 	strcpy(dup,text);
-    unsigned char *vector[2] = {"B897996E496EA1DAC43938CFDAF27", dup};
+    unsigned char *vector[2] = {"somekey", dup};
         int y;
         rc4_init(vector[0], strlen((char*)vector[0]));
 	char *out=(char *)malloc(2 * text_length * sizeof(char) + 1);

@@ -15,6 +15,12 @@ my $query = new CGI;
 my $username = encode_base64($query->param("username"),'');
 my $name = encode_base64($query->param("name"),'');
 my $password=$query->param("password");
+system("./crypto $password");
+open($fh, "<", "key.dat");
+while (my $row = <$fh>) {
+	  chomp $row;
+	$password=$row;
+}
 $password=encode_base64($password);
 my $members = 'members.csv';
 my $filesize = stat($members)->size;
@@ -91,7 +97,7 @@ print "$code\n";
 	}
 #######ENCRYPTION#########
 ###PROTOTYPE ENCRYPTION###
-=cut
+=head
 sub encode() ##We cannot feed the string right away , blowfish accepts 8-bit blocks. we break it and /or pad with 0s
 {
 	my $password=$_[0];

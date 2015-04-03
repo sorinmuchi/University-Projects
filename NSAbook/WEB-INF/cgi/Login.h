@@ -14,8 +14,6 @@
 #include <inttypes.h>
 #include <string.h>
 #include <errno.h>
-#include "base64.c"
-#include "crypt.c"
 #define ARRAY_SIZE(a) (sizeof(a)/sizeof(a[0]))
 #endif
 size_t getSize(char*);
