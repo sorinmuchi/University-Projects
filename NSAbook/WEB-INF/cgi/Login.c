@@ -50,6 +50,7 @@ int main()
   }
   else //Either not found, or on different lines. In this case, make them try again
   {
+		//printf("<script>alert(\"%s\")</script>\n",CGI_ENC_P); For debugging
 		printf("<meta http-equiv=\"refresh\" content=\"0; url=../index.html\" />\n");
   }
   return 0;

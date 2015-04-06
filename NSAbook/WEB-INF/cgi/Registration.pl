@@ -47,6 +47,7 @@ if ($filesize == 0)
 <html>
 <head>
 <link rel="shortcut icon" href="../img/icons/favicon.png">
+<meta charset="UTF-8">
 <title>Welcome to NSAbook - Login</title>
 </head>
 <body bgcolor="#090E50">
