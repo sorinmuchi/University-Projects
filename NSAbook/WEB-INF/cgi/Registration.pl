@@ -11,10 +11,28 @@ print "Content-type: text/html\n\n";
 print "<head>\n";
 ##Redirect##
 print "</head>\n";
+my $timestamp=time();
+open (my $tsfh,"<","ts.dat") or die "No file found";
+my $last=<$tsfh>;
+chomp($last);
+close($tsfh);
+if (abs($timestamp-$last) <60)
+{
+	goto ERROR;
+}
+else
+{
+	open (my $tsfh, ">","ts.dat");
+	print $tsfh $timestamp."\n";
+	close($tsfh);
+}
 my $query = new CGI;
 my $username = encode_base64($query->param("username"),'');
 my $name = encode_base64($query->param("name"),'');
 my $password=$query->param("password");
+chomp($username);
+chomp($name);
+chomp($password);
 system("./crypto $password");
 open($fh, "<", "key.dat");
 my $row = <$fh>;
@@ -27,6 +45,10 @@ my $filesize = stat($members)->size;
 if ($filesize == 0)
 {
 	goto LOGIN;
+}
+if ($password.length > 30 || $username.length > 30 || $password.length >30)
+{
+	goto ERROR;
 }
 	open($fh, "<", $members);
 	my ($username_dup,$residual);
@@ -43,6 +65,7 @@ if ($filesize == 0)
 	#look through the stack, if we have the username, report error
 	if ( $username ~~ @usernames) #Access refused, error page
 	{
+	ERROR:
 		my $code=<<"END";
 <html>
 <head>
@@ -66,12 +89,12 @@ if ($filesize == 0)
 	<img src="../img/loginBanner.png">
 		<form action="Login.cgi" method="get">
 		<br>
-		<font color="red" size+=6>Registration Error - Username taken (exception code 0xDEADBEEF)</font><br>
+		<font color="red" size+=6>Registration Error - Username taken or DDOS prevention triggered (exception code 0xDEADBEEF)</font><br>
 		<img src="../img/username.png">
-		<input type="text" name="username">
+		<input type="text" pattern="[A-Za-z0-9]*" title="A-Z0-9 pliz" maxlength=15 name="username">
 		<br>
 		<img src="../img/password.png">
-		<input type="password" name="password">
+		<input type="password" pattern="[A-Za-z0-9]*" title="A-Z0-9 pliz" maxlength=15 name="password">
 		<br><br>
 		<input type="submit" value="Login">
 		</form>

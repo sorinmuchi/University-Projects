@@ -7,7 +7,12 @@ int main()
  if (CGIargs == NULL)
  {
 	printf("Please use the form to access the site.\n Exiting...\n");
-	exit(1);
+	printf("<meta http-equiv=\"refresh\" content=\"0; url=../index.html\" />\n");
+ }
+ if (getSize(CGIargs) > 50)
+ {
+		printf("Please use the form to access the site.\n Exiting...\n");
+		printf("<meta http-equiv=\"refresh\" content=\"0; url=../index.html\" />\n");
  }
  char* CGIuser=(char*)malloc(SIZE * sizeof(char));
  char* CGIpass=(char*)malloc(SIZE * sizeof(char));
@@ -34,7 +39,7 @@ int main()
 <input type=”hidden” name=”username” value=”CGIuser”>
 <input type="submit" value="Login">
 </form>
-*/	printf("<meta http-equiv=\"refresh\" content=\"0; url=Feed.py?username=%s\" />\n",CGIuser);
+*/	printf("<meta http-equiv=\"refresh\" content=\"0; url=Feed.py?id=0&username=%s\" />\n",CGI_ENC_U);
 	/*printf("<form name=cookie action=Feed.py method=get>\n");
 	printf("<input type=hidden name=username value=%s>\n",CGIuser);
 	printf("<input type=submit value=Login>\n");
