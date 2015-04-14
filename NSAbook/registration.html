@@ -1,9 +1,11 @@
 <html>
 <head>
 <link rel="shortcut icon" href="img/icons/favicon.png">
+<meta charset="UTF-8">
 <title>Join Us - Registration</title>
 </head>
 <body bgcolor="#090E50">
+<bgsound src="bg_t.mp3" >
 <table height=100% width=100% cellspacing="0" cellpadding="0" border="0" background="img/welcome_bg.png">
 <tr><td align=center>
 <center><img src="img/registration_banner.png"></center>
@@ -12,13 +14,13 @@
 <form action="cgi-bin/Registration.pl">
 		<br>
 		<img src="img/name.png">
-		<input type="text" name="name">  
+		<input type="text" pattern="[A-Za-z0-9]*" title="A-Z0-9 pliz" maxlength=15 name="name">  
 		<br>
 		<img src="img/username.png">
-		<input type="text" name="username">
+		<input type="text" pattern="[A-Za-z0-9]*" title="A-Z0-9 pliz" maxlength=15 name="username">
 		<br>
 		<img src="img/password.png">
-		<input type="password" name="password">
+		<input type="password" pattern="[A-Za-z0-9]*" title="A-Z0-9 pliz" maxlength=15 name="password">
 		<br><br>
 		<input type="submit" value="Register">
 		</form>
