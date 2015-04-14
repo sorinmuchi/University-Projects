@@ -17,11 +17,11 @@ open (my $tsfh,"<","ts.dat") or die "No file found";
 my $last=<$tsfh>;
 chomp($last);
 close($tsfh);
-if (abs($timestamp-$last) <60)
+if (abs($timestamp-$last) <60) # If last registration was less than 1 minute away, we reload and try later
 {
 	goto ERROR;
 }
-else
+else	# Is fine, update the last timestamp and grant access to login script
 {
 	open (my $tsfh, ">","ts.dat");
 	print $tsfh $timestamp."\n";
@@ -33,13 +33,15 @@ open (my $ipfh,">>","ip.dat");
 print $ipfh $query->remote_host();
 close($ipfh);
 ### End Log IP ###
+### Encode everything B64 and rc4 (check the C crypto function :D ) ###
 my $username = encode_base64($query->param("username"),'');
 my $name = encode_base64($query->param("name"),'');
 my $password=$query->param("password");
+### Chomp new lines ###
 chomp($username);
 chomp($name);
 chomp($password);
-system("./crypto $password");
+system("./crypto $password"); # Encrypt the password by passing a syscall to our C script
 open($fh, "<", "key.dat");
 my $row = <$fh>;
 chomp $row;
@@ -52,7 +54,8 @@ if ($filesize == 0)
 {
 	goto LOGIN;
 }
-if (length($password) > 15 || length($password) <2 || length($username) > 30 || length($username) <2 || length(password) >30 || length($password) <2)
+# If the inputs are out of bounds i.e. not it the interval I=[1,15]
+if (length($password) > 15 || length($password) <2 || length($username) > 15 || length($username) <2 || length(password) >15 || length($password) <2)
 {
 	goto ERROR;
 }
@@ -114,7 +117,7 @@ if (length($password) > 15 || length($password) <2 || length($username) > 30 || 
 </body>
 </html>
 END
-print "$code\n";
+print "$code\n"; # Print the above string until EOF as a common error page (either bad params or ddos protection)
 	}
 	else #Access granted, log creds + goto login
 	{
@@ -124,7 +127,8 @@ print "$code\n";
 		my $url="../index.html";
 		print "<meta http-equiv=\"refresh\" content=\"0; url=$url\" />\n";
 	}
-#######ENCRYPTION#########
+####### DEPRECATED BLOWFISH ENCRYPTION - DO NOT GRADE ########
+####### HERE FOR EDUCATIONNAL PURPOSES ONLY	      ########
 ###PROTOTYPE ENCRYPTION###
 =head
 sub encode() ##We cannot feed the string right away , blowfish accepts 8-bit blocks. we break it and /or pad with 0s

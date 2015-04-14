@@ -39,19 +39,8 @@ int main()
 <input type=”hidden” name=”username” value=”CGIuser”>
 <input type="submit" value="Login">
 </form>
-*/	printf("<meta http-equiv=\"refresh\" content=\"0; url=MyFacebookPage.py?id=0&username=%s\" />\n",CGI_ENC_U);
-	/*printf("<form name=cookie action=Feed.py method=get>\n");
-	printf("<input type=hidden name=username value=%s>\n",CGIuser);
-	printf("<input type=submit value=Login>\n");
-	printf("</form>\n");
-	printf("<script>\n");
-	printf("var auto_refresh = setInterval(function() { submitform(); }, 10000);\n");
-	printf("function submitform()\n");
-	printf("{\n");
- 	printf(" document.getElementById(cookie).submit();\n");
-	printf("}\n");
-	printf("</script>\n");
-	*/
+*/	
+	printf("<meta http-equiv=\"refresh\" content=\"0; url=MyFacebookPage.py?id=0&username=%s\" />\n",CGI_ENC_U);
   }
   else //Either not found, or on different lines. In this case, make them try again
   {

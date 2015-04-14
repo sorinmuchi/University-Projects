@@ -3,6 +3,7 @@
 import cgi, cgitb, csv, base64, re,copy
 cgitb.enable()
 
+#### ALL PARAMS ARE ENCRYPTED VIA B64 + PASSWORD IS ENCRYPTED VIA RC4 ####
 ####################### Gets encrypted username and decrypts it #######################    
 
 form = cgi.FieldStorage()			
@@ -30,7 +31,6 @@ print '<a href="../index.html">'
 print '<button>Logout</button>'
 print '</a>'
 
-#################################################################################
 ####################### Gets the user's real name ####################### 
 name=""   
 membersRead = csv.reader(open("members.csv", "r"))
@@ -115,24 +115,6 @@ while len(content) > 0:
 			status = row[1]
 			status = base64.b64decode(status)
 			print '<font color="white" size=4>', name, ' says <br />"', status, '"<br /><br /></font>'	
-#stack = []
-#with open('topics.csv', 'r') as in_file:
-#	for line in in_file:
-#		stack.append(line)
-#with open('out.csv', 'w') as out_file:
-#	while len(stack) >0:
-#		out_file.write(stack.pop())
-#outRead = csv.reader(open("out.csv", "r"))
-#for row in outRead:
-#	for names in friends:
-#		nextRow = outRead.next()[0]
-#		if (names == nextRow):
-#			name = outRead.next()[0]
-#			name = base64.b64decode(name)
-#			status = row[0]
-#			status = base64.b64decode(status)
-#			print '<font color="white">', name, ':<br />"', status, '"<br /><br /></font>'	
-
 ###############################################################################
 
 print '</td>'
@@ -149,6 +131,7 @@ print '</td>'
 print '</tr>'
 
 ####################### Follow a user #######################
+#We check for : existence of CGi param, existence of user
 if (form.has_key("user")):
 	friend = form["user"].value
 	friend=cgi.escape(friend,quote=True)
