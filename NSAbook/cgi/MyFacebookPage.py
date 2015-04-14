@@ -10,17 +10,7 @@ username = form["username"].value
 username=cgi.escape(username,quote=True)
 
 ####################################################################################### 
-
-####################### Gets the user's real name #######################    
-
-membersRead = csv.reader(open("members.csv", "r"))
-for row in membersRead:
-	list = row[0].split()
-	if (username == list[1]):
-		name = list[0]
-		name = base64.b64decode(name)
-
-#########################################################################  
+ 
 
 print "Content-type:text/html\r\n\r\n"
 print '<html>'
@@ -41,6 +31,18 @@ print '<button>Logout</button>'
 print '</a>'
 
 #################################################################################
+####################### Gets the user's real name ####################### 
+name=""   
+membersRead = csv.reader(open("members.csv", "r"))
+for row in membersRead:
+	list = row[0].split()
+	if (username == list[1]):
+		name = list[0]
+		name = base64.b64decode(name)
+		name = cgi.escape(name,quote=True)
+if not name:
+	print '<meta http-equiv="refresh" content="0; url=../index.html">'
+######################################################################### 
 
 print '</td>'
 print '</tr>'
