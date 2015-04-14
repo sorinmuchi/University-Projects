@@ -103,7 +103,6 @@ content =[]
 with open("topics.csv", "r") as f:
 	content=f.readlines()
 f.close()
-topicsRead = csv.reader(open("topics.csv", "r"))
 while len(content) > 0:
 	row3=content.pop()
 	row=row3.split(',')
@@ -148,11 +147,20 @@ print '</td>'
 print '</tr>'
 
 ####################### Follow a user #######################
-
 if (form.has_key("user")):
 	friend = form["user"].value
 	friend=cgi.escape(friend,quote=True)
 	friend = base64.b64encode(friend)
+	with open("members.csv", "r") as f:
+		content=f.readlines()
+	f.close()
+	hasFriend=0
+	for mname in content:
+		namez=mname.split(' ')
+		if (namez[1] == friend):
+			hasFriend=1
+	if (hasFriend ==0):
+		print '<meta http-equiv="refresh" content="0; url=../index.html">'
 	membersRead = csv.reader(open("members.csv", "r"))
 	for row in membersRead:
 		list = row[0].split()
