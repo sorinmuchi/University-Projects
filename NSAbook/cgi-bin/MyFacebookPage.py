@@ -159,8 +159,8 @@ if (form.has_key("user")):
 		namez=mname.split(' ')
 		if (namez[1] == friend):
 			hasFriend=1
-	if (hasFriend ==0):
-		print '<meta http-equiv="refresh" content="0; url=../index.html">'
+	if (hasFriend == 0):
+		friend=""
 	membersRead = csv.reader(open("members.csv", "r"))
 	for row in membersRead:
 		list = row[0].split()
