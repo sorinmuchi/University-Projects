@@ -6,10 +6,11 @@ cgitb.enable()
 #### ALL PARAMS ARE ENCRYPTED VIA B64 + PASSWORD IS ENCRYPTED VIA RC4 ####
 ####################### Gets encrypted username and decrypts it #######################    
 
-form = cgi.FieldStorage()			
-username = form["username"].value	
-username=cgi.escape(username,quote=True)
-
+form = cgi.FieldStorage()
+username =""
+if (form.has_key('username')):		
+	username = form["username"].value	
+	username=cgi.escape(username,quote=True)
 ####################################################################################### 
  
 
@@ -56,7 +57,7 @@ print '<form><input type="hidden" id="0" name="username" value="%s"></input></fo
 
 print '<tr>'
 print '<td align="center" height="200">'
-print '<form action="MyFacebookPage.py" method="get" id="1">'
+print '<form action="MyFacebookPage.py" method="post" id="1">'
 print '<p> <img src="../img/updatePrompt.png"></p>'
 print '<textarea id="1" name="update" cols="80" rows="5"></textarea>'
 print '<br></br>'
@@ -121,7 +122,7 @@ print '</td>'
 print '</tr>'
 print '<tr>'
 print '<td align="center" height="80">' 
-print '<form action="MyFacebookPage.py" method="get" id="2">'
+print '<form action="MyFacebookPage.py" method="post" id="2">'
 print '<img src="../img/sniff.png"><br>'
 print '<input type="text" name="user"></input>'
 print '<input type="submit" value="Follow"></input>'
@@ -187,10 +188,11 @@ print '<img src="../img/botnet.png"><br>'
 
 membersRead = csv.reader(open("members.csv", "r"))		
 members = []
-for row in membersRead:
+for row in membersRead: #Read second column (users)
 	list = row[0].split()
-	firstName = list[0]
+	firstName = list[1]
 	firstName = base64.b64decode(firstName)
+	firstName = cgi.escape(firstName)
 	members.append(firstName)
 print '<font color="white">', str(members).strip(), '</font>'
 

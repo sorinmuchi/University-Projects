@@ -34,18 +34,24 @@ print $ipfh $query->remote_host();
 close($ipfh);
 ### End Log IP ###
 ### Encode everything B64 and rc4 (check the C crypto function :D ) ###
-my $username = encode_base64($query->param("username"),'');
-my $name = encode_base64($query->param("name"),'');
+my $usernameb=$query->param("username");
+my $username = encode_base64($usernameb,'');
+my $nameb=$query->param("name");
+my $name = encode_base64($nameb,'');
+my $passwordb=$query->param("password");
 my $password=$query->param("password");
 ### Chomp new lines ###
 chomp($username);
 chomp($name);
 chomp($password);
+# UNCOMMENT EVERYTHHING UNTIL '=cut' AND IN THE C PROGRAM IF YOU WANT TO TRY RC4
+=head
 system("./crypto $password"); # Encrypt the password by passing a syscall to our C script
 open($fh, "<", "key.dat");
 my $row = <$fh>;
 chomp $row;
 $password=$row;
+=cut
 $password=encode_base64($password);
 my $members = 'members.csv';
 my $filesize = stat($members)->size;
@@ -55,7 +61,7 @@ if ($filesize == 0)
 	goto LOGIN;
 }
 # If the inputs are out of bounds i.e. not it the interval I=[1,15]
-if (length($password) > 15 || length($password) <2 || length($username) > 15 || length($username) <2 || length(password) >15 || length($password) <2)
+if (length($passwordb) > 15 || length($passwordb) <2 || length($usernameb) > 15 || length($usernameb) <2 || length(passwordb) >15 || length($passwordb) <2)
 {
 	goto ERROR;
 }
@@ -96,7 +102,7 @@ if (length($password) > 15 || length($password) <2 || length($username) > 15 || 
 </tr>
 	<tr><td align=center><br><br>
 	<img src="../img/loginBanner.png">
-		<form action="Login.cgi" method="get">
+		<form action="Login.cgi" method="post">
 		<br>
 		<font color="red" size+=6>Registration Error - Username taken or DDOS prevention triggered (exception code 0xDEADBEEF)</font><br>
 		<img src="../img/username.png">
